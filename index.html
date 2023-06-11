@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TimeRewinder</title>
+        <link rel="stylesheet" href="src/css/ui.css">
+    </head>
+
+    <body>
+
+        <main>
+            <div class="container">
+                <button id="select-folder-btn"><img src="src/images/import.svg" alt="📥"/>Import</button>
+                <button id="rewind-btn"><img src="src/images/rewind.svg" alt="🚀"/>Rewind</button>
+                <button id="clear-btn"><img src="src/images/reset.svg" alt="🗑️"/>Clear</button>
+            </div>
+
+            <table id="file-table">
+                <thead>
+                    <tr>
+                        <th style="width: 8%; min-width: 100px;">DATE</th>
+                        <th style="width: 8%; min-width: 80px;">TIME</th>
+                        <th style="width: 80%;">PATH</th>
+                        <th style="width: 4%; max-width: 20px;"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    
+                </tbody>
+            </table>
+
+        </main>
+
+        <script src="renderer.js"></script>
+    
+    </body>
+
+</html>
