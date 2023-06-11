@@ -1,4 +1,4 @@
-<img src="readme_files/icon.png" width="200" />
+<img src="Readme_files/icon.png" width="200" />
 
 # TimeRewinder
 Unfortunately, it happens that the creation date is overwritten during editing or conversion or that some photo programmes (e.g. Synology Photo) sort the videos according to the modification date. Time Rewinder helps to reset the timestamps (creation and modification date) to the origin based on the file name.
