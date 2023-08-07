@@ -1,6 +1,6 @@
 {
   "name": "time-rewinder",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Tool to correct the creation and modification date of images and videos based on the file name.",
   "main": "main.js",
   "author": "Michael Neufeld",
@@ -14,8 +14,8 @@
     "dist": "electron-builder"
   },
   "devDependencies": {
-    "electron": "^25.1.0",
-    "electron-builder": "^24.4.0"
+    "electron": "^25.4.0",
+    "electron-builder": "^24.6.3"
   },
   "build": {
     "asarUnpack": [

@@ -21,7 +21,7 @@ ipcRenderer.on('selected-directory', (event, directory) => {
         if (dateAndTime == null || !isValidDateTime(dateAndTime)) {
           color = "#e53935";
         }
-        let row = `<tr id="row-${index+1}" style="color:${color};"><td>${dateAndTime.date}</td><td>${dateAndTime.time}</td><td>${filePath}</td><td><button class="btn_del" data-row-id="row-${index+1}"><img src="src/images/remove.svg" alt="✕" width="100%"/></button></td></tr>`
+        let row = `<tr id="row-${index + 1}" style="color:${color};"><td>${dateAndTime.date}</td><td>${dateAndTime.time}</td><td>${filePath}</td><td><button class="btn_del" data-row-id="row-${index + 1}"><img src="src/images/remove.svg" alt="✕" width="100%"/></button></td></tr>`
         document.getElementById('file-table').getElementsByTagName('tbody')[0].insertAdjacentHTML('beforeend', row)
       }
     })
@@ -63,13 +63,60 @@ document.getElementById('rewind-btn').addEventListener('click', () => {
     const time = cells[1].innerText
     const filePath = cells[2].innerText
     const dateTimeStr = `${date} ${time}`
-    ipcRenderer.send('rewrite-metadata', { filePath, dateTimeStr, rowId: `row-${index}` })
+    const creator = document.getElementById('creator-input').value.trim()
+    const headline = document.getElementById('headline-input').value.trim()
+    const description = document.getElementById('description-input').value.trim()
+    const keywordsInput = document.getElementById('keywords-input').value.trim();
+    const keywords = keywordsInput !== "" ? keywordsInput.split(/[\;,]/).map(keyword => keyword.trim()) : [];
+    
+    const city = document.getElementById('city-input').value.trim()
+    const country = document.getElementById('country-input').value.trim()
+    const copyright = document.getElementById('creator-input').value.trim()
+
+    const metadata = {
+      AllDates: dateTimeStr,
+      FileCreateDate: dateTimeStr,
+      'IPTC:DateCreated': date,
+      'IPTC:TimeCreated': time,
+      FileModifyDate: dateTimeStr,
+    }
+
+    if (creator) metadata['XMP:Creator'] = creator
+    if (creator) metadata['IPTC:By-line'] = creator
+
+    if (headline) metadata['XMP:Headline'] = headline
+    if (headline) metadata['IPTC:Headline'] = headline
+
+    if (description) metadata['XMP:Description'] = description
+    if (description) metadata['IPTC:Caption-Abstract'] = description
+    if (description) metadata['XMP:ImageDescription'] = description
+
+    if (keywords.length > 0) {
+      metadata['XMP:Subject'] = keywords
+      metadata['XMP:Keywords'] = keywords
+      metadata['IPTC:Keywords'] = keywords
+    }
+
+    if (city) metadata['XMP:Location'] = city
+    if (city) metadata['IPTC:City'] = city
+
+    if (country) metadata['XMP:Country'] = country
+    if (country) metadata['IPTC:Country-PrimaryLocationName'] = country
+
+    if (copyright) metadata['XMP:Rights'] = copyright
+    if (copyright) metadata['XMP:Copyright'] = copyright
+    if (copyright) metadata['IPTC:CopyrightNotice'] = copyright
+
+    ipcRenderer.send('rewrite-metadata', { filePath, metadata, rowId: `row-${index + 1}` })
   })
 })
 
 ipcRenderer.on('metadata-rewritten', (event, { rowId, status }) => {
   const color = status === 'success' ? 'green' : 'red'
-  document.getElementById(rowId).style.color = color
+  const row = document.getElementById(rowId)
+  if (row) {
+    row.style.color = color
+  }
 })
 
 function isMediaFile(filePath) {
@@ -94,6 +141,13 @@ function parseDateAndTimeFromFilename(filename) {
 
 document.getElementById('clear-btn').addEventListener('click', () => {
   document.getElementById('file-table').getElementsByTagName('tbody')[0].innerHTML = ""
+  document.getElementById('creator-input').value = ""
+  document.getElementById('headline-input').value = ""
+  document.getElementById('description-input').value = ""
+  document.getElementById('keywords-input').value = ""
+  document.getElementById('city-input').value = ""
+  document.getElementById('country-input').value = ""
+  document.getElementById('creator-input').value = ""
   addDeleteButtonClickListeners()
 })
 
@@ -112,7 +166,7 @@ function addDeleteButtonClickListeners() {
 function updateRowIds() {
   const rows = document.getElementById('file-table').querySelectorAll('tr')
   rows.forEach((row, index) => {
-    if (index === 0) return 
+    if (index === 0) return
     const newRowId = `row-${index}`
     row.id = newRowId
     const deleteButton = row.querySelector('.btn_del')

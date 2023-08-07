@@ -29,6 +29,7 @@ On external drives, the modification date will not be corrected. In this case, y
 |         |                   |
 | ------- | ----------------- |
 | Install | · `npm install`   |
+| Update with NCU | · `ncu -u`   |
 | Develop | · `npm start`   |
 | Build Mac  | · `electon-builder -m` |
 | Build  Win | · `npx electron-builder` |
