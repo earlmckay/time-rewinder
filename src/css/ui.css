@@ -104,6 +104,28 @@ button:hover {
   transform: scale(105%);
 }
 
+.metadata-inputs {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+input {
+  margin-right: 1%;
+  margin-bottom: 1em;
+  font-weight: 300;
+  font-size: 0.7em;
+  letter-spacing: 0.07em;
+  height: 3em;
+  border-radius: 2em;
+  border-width: 1px;
+  border-color: #39455a;
+  padding: 3px 9px 3px 9px;
+  color: #39455a;
+  outline-color: #426cf1;
+  outline-width: 1px;
+  outline: none;
+}
+
 table {
   width:100%;
   border-spacing: 0;
@@ -117,7 +139,7 @@ table ,tr td{
 }
 tbody {
   display:block;
-  max-height:75vh;
+  max-height:60vh;
   overflow-y:scroll;
   font-family: "Jost";
   letter-spacing: 0.05em;
@@ -157,27 +179,24 @@ thead {
 }
 
 tbody td {
-  width: 11%;
-  min-width: 100px;
+  width: 7em;
 }
 
 tbody td:nth-child(2) {
-  width: 9%;
-  min-width: 80px;
+  width: 6em;
 }
 
 tbody td:nth-child(3) {
-  width: 77%;
+width: max-content;
 }
 
 tbody td:nth-child(4) {
-  width: 3%;
-  max-width: 20px;
+  width: 2em;
   text-align: right;
   padding-right: 5px; 
 }
 
-/*tbody tr:hover {
+tbody tr:hover {
   background-color: #ecf1f7;
 }*/
 
