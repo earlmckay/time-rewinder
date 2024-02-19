@@ -120,7 +120,7 @@ ipcRenderer.on('metadata-rewritten', (event, { rowId, status }) => {
 })
 
 function isMediaFile(filePath) {
-  const allowedExtensions = ['.png', '.jpg', '.jpeg', '.bmp', '.gif', '.webp', '.mp4', '.mp3', '.wav', '.flac', '.avi', '.mkv', '.mov']
+  const allowedExtensions = ['.png', '.jpg', '.jpeg', '.heic', '.bmp', '.gif', '.webp', '.mp4', '.mp3', '.wav', '.flac', '.avi', '.mkv', '.mov', '.3gp']
   let ext = path.extname(filePath).toLowerCase()
   return allowedExtensions.includes(ext)
 }
