@@ -6,7 +6,7 @@
   "author": "Michael Neufeld",
   "license": "MIT",
   "dependencies": {
-    "exiftool-vendored": "^22.0.0"
+    "exiftool-vendored": "^26.0.0"
   },
   "scripts": {
     "start": "electron .",
@@ -14,8 +14,8 @@
     "dist": "electron-builder"
   },
   "devDependencies": {
-    "electron": "^25.4.0",
-    "electron-builder": "^24.6.3"
+    "electron": "^30.0.6",
+    "electron-builder": "^24.13.3"
   },
   "build": {
     "asarUnpack": [
