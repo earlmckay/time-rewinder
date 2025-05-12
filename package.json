@@ -1,6 +1,6 @@
 {
   "name": "time-rewinder",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Tool to correct the creation and modification date of images and videos based on the file name.",
   "main": "main.js",
   "author": "Michael Neufeld",
