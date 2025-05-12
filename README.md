@@ -31,7 +31,7 @@ On external drives, the modification date will not be corrected. In this case, y
 | Install | · `npm install`   |
 | Update with NCU | · `ncu -u`   |
 | Develop | · `npm start`   |
-| Build Mac  | · `electron-builder -m` |
-| Build  Win | · `npx electron-builder` |
+| Build Mac  | · `npx electron-builder -m` |
+| Build  Win | · `npx electron-builder -w` |
 
 In order to eliminate vulnerabilities caused by electron itself, please run `npm update` and `npm audit fix`. This will apply overrides.
